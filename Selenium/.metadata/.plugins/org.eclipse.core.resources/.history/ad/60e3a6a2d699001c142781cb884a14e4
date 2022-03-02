@@ -1,0 +1,40 @@
+package LoginOps;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+public class sTimeOut extends setUp {
+	public void login() {
+		drv.findElement(By.id("username")).sendKeys("hnga\n");
+		drv.findElement(By.id("password")).sendKeys("hihihaha123");
+		drv.findElement(By.className("button")).click();
+		Assert.assertEquals(drv.getCurrentUrl(), "https://10.30.8.82/VoicePortal");
+	}
+	public void elm(String time) {
+		drv.switchTo().defaultContent();
+		drv.switchTo().frame("menu"); 
+		drv.findElement(By.xpath("//*[@id=\"menuForm:menuTable:0:menuItemTable:2:menuItem_panelGroup\"]/a/span")).click();
+		drv.switchTo().defaultContent();
+		drv.switchTo().frame("main");
+		WebElement a = drv.findElement(By.id("userSettings:sessionTimeout"));
+		a.clear();
+		a.sendKeys(time);
+		System.out.print(time +": ");
+	}
+	public void testt() {
+		//Applybtn
+		drv.findElement(By.id("userSettings:save1")).click();
+		//Warning
+		String warning= drv.findElement(By.xpath("//*[@id=\"userSettings:loginOpts1\"]/tbody/tr[2]/td[2]/span")).getText();
+		System.out.print(warning+ "\n");
+	} 
+	@Test
+	public void FailValue() {
+		login();
+		elm("0.5");
+		testt();
+	}
+
+}

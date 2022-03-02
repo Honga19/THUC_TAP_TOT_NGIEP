@@ -1,0 +1,65 @@
+package LoginOps;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.testng.annotations.Test;
+
+public class sTimeOut extends setUp {
+
+	public void lgOps() {
+		drv.switchTo().defaultContent();
+		drv.switchTo().frame("menu"); 
+		drv.findElement(By.xpath("//*[@id=\"menuForm:menuTable:0:menuItemTable:2:menuItem_panelGroup\"]/a/span")).click();
+		
+	}
+	public void timeOut (String time) {
+		drv.switchTo().defaultContent();
+		drv.switchTo().frame("main");
+		WebElement a = drv.findElement(By.id("userSettings:sessionTimeout"));
+		a.clear();
+		a.sendKeys(time);
+		System.out.print(time +": ");
+	}
+	public void check() {
+		drv.findElement(By.id("userSettings:save1")).click();
+		String warning= drv.findElement(By.xpath("//*[@id=\"userSettings:loginOpts1\"]/tbody/tr[2]/td[2]/span")).getText();
+		System.out.print(warning+ "\n");
+	} 
+	@Test
+	public void FailValue() {
+		login();
+		lgOps();
+		timeOut("0.5");
+		check();
+	}
+	@Test
+	public void FailValue1() {
+		login();
+		lgOps();
+		timeOut("");
+		check();
+	}
+	@Test
+	public void FailValue2() {
+		login();
+		lgOps();
+		timeOut("hnga");
+		check();
+	}
+	@Test
+	public void FailValue3() {
+		login();
+		lgOps();
+		timeOut("70");
+		check();
+	}
+	@Test
+	public void FailValue4() {
+		login();
+		lgOps();
+		timeOut("#$%^");
+		check();
+	}
+	
+
+}

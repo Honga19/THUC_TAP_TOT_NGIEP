@@ -1,0 +1,10 @@
+package Demo;
+
+import org.openqa.selenium.WebDriver;
+
+public class setUp {
+	WebDriver drv;
+	
+	@BeforeMethod
+	pubic void setUp
+}

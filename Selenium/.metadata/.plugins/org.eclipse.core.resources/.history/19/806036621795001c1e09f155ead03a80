@@ -1,0 +1,21 @@
+package Demo;
+
+import java.util.Objects;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class Logout {
+	WebDriver drv;
+	public Logout (WebDriver drv) {
+		this.drv = Objects.requireNonNull(drv);
+	}
+	public void logout() {
+ 		drv.switchTo().frame("header");
+	 	WebElement logoutBtn = drv.findElement(By.id("topMenuForm:logoff"));
+		if (logoutBtn.isDisplayed()) {
+			logoutBtn.click();
+			}
+		}
+}

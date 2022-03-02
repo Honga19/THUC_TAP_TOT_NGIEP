@@ -1,0 +1,76 @@
+package LoginOps;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+public class sTimeOut extends setUp {
+	functions loginf;
+
+	public void lgOps() {
+		drv.switchTo().defaultContent();
+		drv.switchTo().frame("menu"); 
+		drv.findElement(By.xpath("//*[@id=\"menuForm:menuTable:0:menuItemTable:2:menuItem_panelGroup\"]/a/span")).click();
+		drv.switchTo().defaultContent();
+		drv.switchTo().frame("main");
+		String a = drv.findElement(By.className("heading1plain")).getText();
+		Assert.assertEquals(a, "Login Options");
+		System.out.print("Click successful\n");
+	}
+	public void timeOut (String time) {
+		drv.switchTo().defaultContent();
+		drv.switchTo().frame("main");
+		WebElement a = drv.findElement(By.id("userSettings:sessionTimeout"));
+		a.clear();
+		a.sendKeys(time);
+		System.out.print(time +": ");
+	}
+	public void check() {
+		drv.findElement(By.id("userSettings:save1")).click();
+		String warning= drv.findElement(By.xpath("//*[@id=\"userSettings:loginOpts1\"]/tbody/tr[2]/td[2]/span")).getText();
+		System.out.print(warning+ "\n");
+	} 
+	@Test
+	public void FailValue() {
+		loginf = new functions(drv);
+		loginf.login("hnga\n", "hihihaha123");
+		lgOps();
+		timeOut("0.5");
+		check();
+	}
+	@Test
+	public void FailValue1() {
+		loginf = new functions(drv);
+		loginf.login("hnga\n", "hihihaha123");
+		lgOps();
+		timeOut("");
+		check();
+	}
+	@Test
+	public void FailValue2() {
+		loginf = new functions(drv);
+		loginf.login("hnga\n", "hihihaha123");
+		lgOps();
+		timeOut("hnga");
+		check();
+	}
+	@Test
+	public void FailValue3() {
+		loginf = new functions(drv);
+		loginf.login("hnga\n", "hihihaha123");
+		lgOps();
+		timeOut("70");
+		check();
+	}
+	@Test
+	public void FailValue4() {
+		loginf = new functions(drv);
+		loginf.login("hnga\n", "hihihaha123");
+		lgOps();
+		timeOut("#$%^");
+		check();
+	}
+	
+
+}

@@ -1,0 +1,18 @@
+package LoginOps;
+
+import org.testng.annotations.Test;
+
+public class timeOut extends setUp {
+	functions fn;
+	String failXpath ="//*[@id=\"userSettings:loginOpts1\"]/tbody/tr[2]/td[2]/span";
+	@Test
+	public void BlankValue() {
+		fn = new functions(drv);
+		fn.login("hnga\n", "hihihaha123");
+		fn.lgOps();
+		fn.value("userSettings:sessionTimeout", "");
+		fn.failCheck(failXpath,
+				"Please fill in this field.");
+	}
+	
+}

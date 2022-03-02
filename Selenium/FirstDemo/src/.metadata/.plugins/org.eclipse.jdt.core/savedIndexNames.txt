@@ -1,0 +1,1 @@
+INDEX VERSION 1.131+D:\THUC_TAP_TOT_NGHIEP\Selenium\FirstDemo\src\.metadata\.plugins\org.eclipse.jdt.core

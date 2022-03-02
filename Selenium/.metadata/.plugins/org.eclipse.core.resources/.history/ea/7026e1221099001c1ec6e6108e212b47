@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="CSuite" verbose="1">
+	<test name="CTest">
+		<packages>
+			<package name="Demo"></package>
+		</packages>
+		
+	</test>
+</suite>

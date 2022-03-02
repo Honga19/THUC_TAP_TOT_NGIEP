@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="CSuite" verbose="1">
+	<test name="CTest">
+		<packages>
+			<package name="Demo" />
+			<package name="Login" />
+		</packages>
+		<classes>
+			<class name="Demo.BaseClass" />
+			<class name="Demo.test">
+				<methods>
+					<include name="login" />
+				</methods>
+			</class>
+			<class name="Login.Loginform" />
+		</classes>
+	</test>
+</suite>
